@@ -270,7 +270,6 @@ class BoundsPages {
 	{	if(is_admin()){
 			$userID=get_current_user_id();
 			if($this->is_user_in_role($userID,'administrator')||$this->is_user_in_role($userID,'editor' )){
-
 				if(get_post_type() === 'page'){
 					$postID=$post->ID;
 					$author=get_post($postID); 
@@ -285,8 +284,6 @@ class BoundsPages {
 						  );
 						$link=$url;
 						$link = ( function_exists('wp_nonce_url') ) ? wp_nonce_url($link, 'limit_restitute_page') : $link;
-						//put a nonce here-------------------------------------------------------------------------------------
-						//$actions['rendre'] = '<a href="' . esc_url( $url ) . '">'.($this->is_user_in_role($userID,'scontributor')?'Editer':'Restituer').'</a>';
 						$actions['rendre'] = '<a href="' . $link . '">'.'Restituer'.'</a>';
 					}
 				}
