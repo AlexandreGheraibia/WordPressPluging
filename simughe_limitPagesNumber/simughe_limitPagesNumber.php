@@ -123,7 +123,7 @@ function add_entry_HTML($content,$title,$address,$postID){
 
 /*
 	the editor/admin suppress a scontributor page, we suppress his link
-  */
+ */
 function my_postTrashed($postID){
 	global $wpdb;
 	$userID=get_current_user_id();
