@@ -98,7 +98,6 @@ class BoundsPages {
 	    $dom = new DOMDocument();
 		$dom->encoding = 'UTF-8';
 	    $dom->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'),LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-		//see add nonce
 		$ol = $dom->getElementsByTagName('ol');
 		if(isset($ol)&&$ol->count()>0){
 			$ol = $ol[0];
@@ -140,10 +139,10 @@ class BoundsPages {
 							'ID'           => 1253,
 							'post_content' => $res);
 						wp_update_post( $my_post);
-					    $wpdb->query('COMMIT'); // if you come here then well done
+					    	$wpdb->query('COMMIT'); // if you come here then well done
 					}
 					else{
-						 $wpdb->query('ROLLBACK'); // // something went wrong, Rollback
+						$wpdb->query('ROLLBACK'); // // something went wrong, Rollback
 					}
 
 			}
