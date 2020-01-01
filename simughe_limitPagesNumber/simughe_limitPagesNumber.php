@@ -287,7 +287,7 @@ function my_restore_post($postID){
 							)
 						  );
 						$link=$url;
-						$link = ( function_exists('wp_nonce_url') ) ? wp_nonce_url($link, 'cluqLimit_restitute_page') : $link;
+						$link = ( function_exists('wp_nonce_url') ) ? wp_nonce_url($link, 'limit_restitute_page') : $link;
 						//put a nonce here-------------------------------------------------------------------------------------
 						//$actions['rendre'] = '<a href="' . esc_url( $url ) . '">'.($this->is_user_in_role($userID,'scontributor')?'Editer':'Restituer').'</a>';
 						$actions['rendre'] = '<a href="' . $link . '">'.'Restituer'.'</a>';
@@ -304,7 +304,6 @@ function my_restore_post($postID){
 	}
 	
 	function restitute_page_to_author(){
-		
 		//check the nonce here-------------------------------------------------------------------------------------
 	  if (is_admin()&&isset( $_REQUEST['my_action'] ) && 
 	   'restitute_page_to_author' == $_REQUEST['my_action']  ) {
@@ -313,7 +312,7 @@ function my_restore_post($postID){
 			$post_content=get_post($postID); 
 			$authorID = $post_content->post_author; // Post author ID.
 			if($this->is_user_in_role($authorID,'scontributor')){
-					check_admin_referer('cluqLimit_restitute_page');
+					check_admin_referer('limit_restitute_page');
 					$this->change_post_status($postID,'draft');
 					$post_1253=get_post(1253); 
 					$content = $post_1253->post_content;
